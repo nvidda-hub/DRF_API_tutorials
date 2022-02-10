@@ -1,7 +1,7 @@
 from API_1.models import Student
 from API_1.serializers import StudentSerializer
 from rest_framework import viewsets
-from rest_framework.authentication import BasicAuthentication, SessionAuthentication
+from rest_framework.authentication import BasicAuthentication, SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from API_1.custom_permissions import MyPermission
 
@@ -30,7 +30,7 @@ from API_1.custom_permissions import MyPermission
 # sesssion authentication
 
 class StudentModelViewSet(viewsets.ModelViewSet):
-    authentication_classes = [SessionAuthentication]
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     serializer_class = StudentSerializer
     queryset = Student.objects.all()

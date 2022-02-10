@@ -19,11 +19,11 @@ router.register('students', views.StudentModelViewSet, basename='students')
 urlpatterns = [
     path('viewset/', include(router.urls)),
     path('viewset/<int:pk>/', include(router.urls)),
-    # path('auth/', include('rest_framework.urls', namespace='sessionAuth')),  
+    path('auth/', include('rest_framework.urls', namespace='sessionAuth')),  
     # path('gettoken/', CustomAuthToken.as_view()),  
-    path('get/token/', TokenObtainPairView.as_view(), name='token_auth_pair'),  
-    path('refresh/token/', TokenRefreshView.as_view(), name='token_refresh'),  
-    path('verify/token/', TokenVerifyView.as_view(), name='token_verify'),  
+    # path('get/token/', TokenObtainPairView.as_view(), name='token_auth_pair'),  
+    # path('refresh/token/', TokenRefreshView.as_view(), name='token_refresh'),  
+    # path('verify/token/', TokenVerifyView.as_view(), name='token_verify'),  
     # to provide credentials for session auth b'coz unlike basic auth there is no promopt
 ]
 

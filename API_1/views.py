@@ -4,13 +4,15 @@ from rest_framework import viewsets
 from rest_framework.authentication import BasicAuthentication, SessionAuthentication, TokenAuthentication
 from API_1.custom_auth import CustomAuthentication
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
 from API_1.custom_permissions import MyPermission
-
+from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 
 
 class StudentModelViewSet(viewsets.ModelViewSet):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]      # http://127.0.0.1:8000/api1/v1/viewset/students/?username=user3
+    # authentication_classes = [JWTAuthentication]
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]      # http://127.0.0.1:8000/api1/v1/viewset/students/?username=user3
     serializer_class = StudentSerializer
     queryset = Student.objects.all()
+    throttle_classes = [AnonRateThrottle, UserRateThrottle]

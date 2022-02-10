@@ -8,6 +8,8 @@ from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticate
 from API_1.custom_permissions import MyPermission
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 
+from API_1.custom_throttling import CustomThrottlingForUser
+
 
 class StudentModelViewSet(viewsets.ModelViewSet):
     # authentication_classes = [JWTAuthentication]
@@ -15,4 +17,5 @@ class StudentModelViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]      # http://127.0.0.1:8000/api1/v1/viewset/students/?username=user3
     serializer_class = StudentSerializer
     queryset = Student.objects.all()
-    throttle_classes = [AnonRateThrottle, UserRateThrottle]
+    # throttle_classes = [AnonRateThrottle, UserRateThrottle]
+    throttle_classes = [AnonRateThrottle, CustomThrottlingForUser]

@@ -124,7 +124,7 @@ REST_FRAMEWORK  = {
         'new_user':'3/minute',
     },
 
-    'DEFAULT_FILTER_BACKENDS':['django_filters.rest_framework.DjangoFilterBackend']
+    # 'DEFAULT_FILTER_BACKENDS':['django_filters.rest_framework.DjangoFilterBackend']
 
 }
 

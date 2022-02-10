@@ -3,7 +3,7 @@ from API_1.serializers import StudentSerializer
 from rest_framework import viewsets
 from rest_framework.authentication import BasicAuthentication, SessionAuthentication
 from rest_framework.permissions import IsAuthenticated, AllowAny
-
+from API_1.custom_permissions import MyPermission
 
 
 # For Basic Authentication

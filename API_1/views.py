@@ -12,6 +12,8 @@ from API_1.custom_throttling import CustomThrottlingForUser
 from django_filters.rest_framework import DjangoFilterBackend
 
 
+from API_1.custom_pagination import MyCustomPagination
+
 
 class StudentModelViewSet(viewsets.ModelViewSet):
     # authentication_classes = [JWTAuthentication]
@@ -21,3 +23,4 @@ class StudentModelViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['city']
+    pagination_class = MyCustomPagination

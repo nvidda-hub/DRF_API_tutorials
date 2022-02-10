@@ -17,5 +17,4 @@ class StudentModelViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]      # http://127.0.0.1:8000/api1/v1/viewset/students/?username=user3
     serializer_class = StudentSerializer
     queryset = Student.objects.all()
-    # throttle_classes = [AnonRateThrottle, UserRateThrottle]
-    throttle_classes = [AnonRateThrottle, CustomThrottlingForUser]
+    filterset_fields = ['city']

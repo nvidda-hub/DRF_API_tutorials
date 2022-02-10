@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'rest_framework',
     # 'rest_framework.authtoken',
     'API_1',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -121,7 +122,9 @@ REST_FRAMEWORK  = {
         'anon':'2/day',
         'user':'5/hour',
         'new_user':'3/minute',
-    }
+    },
+
+    'DEFAULT_FILTER_BACKENDS':['django_filters.rest_framework.DjangoFilterBackend']
 
 }
 
